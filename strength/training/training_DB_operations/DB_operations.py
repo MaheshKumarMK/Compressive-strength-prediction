@@ -210,10 +210,10 @@ class dBOperation:
         On Failure: Raise Exception
 
         """
+        self.filefromDB = TRAINING_DIR_FROM_DB
 
-        self.fileFromDb = 'Training_FileFromDB/'
+        self.fileName = TRAINING_FILE_FROM_DB
 
-        self.fileName = 'InputFile.csv'
 
         log_file = open("Training_Logs/ExportToCsv.txt", 'a+')
 
@@ -233,11 +233,11 @@ class dBOperation:
             headers = [i[0] for i in cursor.description]
 
             #Make the CSV ouput directory
-            if not os.path.isdir(self.fileFromDb):
-                os.makedirs(self.fileFromDb)
+    
+            os.makedirs(self.filefromDB, exist_ok=True)
 
             # Open CSV file for writing.
-            csvFile = csv.writer(open(self.fileFromDb + self.fileName, 'w', newline=''),delimiter=',', lineterminator='\r\n',quoting=csv.QUOTE_ALL, escapechar='\\')
+            csvFile = csv.writer(open(self.fileName, 'w', newline=''),delimiter=',', lineterminator='\r\n',quoting=csv.QUOTE_ALL, escapechar='\\')
 
             # Add the headers and data to the CSV file.
             csvFile.writerow(headers)
