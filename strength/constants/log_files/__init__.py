@@ -18,4 +18,6 @@ DB_TABLE_LOG = open(os.path.join("training_artifact","Training_Logs/DbTableCreat
 
 DB_INSERT_LOG = open(os.path.join("training_artifact","Training_Logs/DbInsertLog.txt", 'a+'))
 
+MODEL_TRAINING_LOG = open(os.path.join("training_artifact","Training_Logs/ModelTrainingLog.txt", 'a+'))
+
 

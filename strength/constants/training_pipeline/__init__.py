@@ -32,6 +32,10 @@ TRAINING_BATCH_FILES = "Training_Batch_Files/"
 
 DATABASE_PATH='Training_Database/'
 
+TRAINING_DIR_FROM_DB=os.path.join("training_artifact",'Training_FileFromDB')
+
+TRAINING_FILE_FROM_DB = os.path.join(TRAINING_DIR_FROM_DB,'InputFile.csv')
+
 
 
 
