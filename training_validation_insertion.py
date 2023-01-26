@@ -14,7 +14,7 @@ class TrainValidation:
 
         self.log_writer = App_Logger()
 
-        self.file_object = MAIN_TRAINING_LOG
+        self.file_object = open(MAIN_TRAINING_LOG, "a+")
 
         self.raw_data = RawDataValidation(path)
 

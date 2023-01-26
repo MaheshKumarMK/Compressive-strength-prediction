@@ -37,7 +37,7 @@ class dBOperation:
         try:
             conn= sqlite3.connect(DATABASE_PATH+DatabaseName+".db" )
 
-            file = DATABASE_CONN_LOG
+            file = open(DATABASE_CONN_LOG,"a+")
 
             self.logger.log(file, "Opened %s database successfully" % DatabaseName)
 
@@ -45,7 +45,7 @@ class dBOperation:
 
         except ConnectionError as e:
 
-            file = DATABASE_CONN_LOG
+            file = open(DATABASE_CONN_LOG,"a+")
 
             self.logger.log(file,"Error while connecting to database: %s" %e )
 
@@ -77,13 +77,13 @@ class dBOperation:
 
                 conn.close()
 
-                file = DB_TABLE_LOG
+                file = open(DB_TABLE_LOG,"a+")
 
                 self.logger.log(file, "Tables created successfully!!")
 
                 file.close()
 
-                file = DB_TABLE_LOG
+                file = open(DB_TABLE_LOG,"a+")
 
                 self.logger.log(file, "Closed %s database successfully" % DatabaseName)
 
@@ -114,13 +114,13 @@ class dBOperation:
 
                 conn.close()
 
-                file = DB_TABLE_LOG
+                file = open(DB_TABLE_LOG,"a+")
 
                 self.logger.log(file, "Tables created successfully!!")
 
                 file.close()
 
-                file = DATABASE_CONN_LOG
+                file = open(DATABASE_CONN_LOG,"a+")
 
                 self.logger.log(file, "Closed %s database successfully" % DatabaseName)
 
@@ -128,7 +128,7 @@ class dBOperation:
 
         except Exception as e:
 
-            file = DB_TABLE_LOG
+            file = open(DB_TABLE_LOG,"a+")
 
             self.logger.log(file, "Error while creating table: %s " % e)
 
@@ -155,7 +155,7 @@ class dBOperation:
 
         onlyfiles = [f for f in os.listdir(goodFilePath)]
 
-        log_file = DB_INSERT_LOG
+        log_file = open(DB_INSERT_LOG,"a+")
 
         for file in onlyfiles:
 

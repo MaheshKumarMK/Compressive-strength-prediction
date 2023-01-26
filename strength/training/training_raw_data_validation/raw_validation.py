@@ -65,7 +65,7 @@ class RawDataValidation:
 
         except OSError as ex:
 
-            file = GENERAL_LOG
+            file = open(GENERAL_LOG,"a+")
 
             self.logger(file, f"Error while creating directory {ex}")
 
@@ -90,7 +90,7 @@ class RawDataValidation:
 
                 shutil.rmtree(TRAINING_GOOD_RAW_FILES_VALIDATED)
 
-                file = open(GENERAL_LOG)
+                file = open(GENERAL_LOG,"a+")
 
                 self.logger.log(file,"GoodRaw directory deleted successfully!!!")
 
@@ -98,7 +98,7 @@ class RawDataValidation:
 
         except OSError as ex:
 
-            file = GENERAL_LOG
+            file = open(GENERAL_LOG,"a+")
 
             self.logger(file, f"Error while creating directory {ex}")
 
@@ -125,7 +125,7 @@ class RawDataValidation:
 
                 shutil.rmtree(TRAINING_BAD_RAW_FILES_VALIDATED)
 
-                file = open(GENERAL_LOG)
+                file = open(GENERAL_LOG,"a+")
 
                 self.logger.log(file,"BAD Raw directory deleted successfully!!!")
 
@@ -133,7 +133,7 @@ class RawDataValidation:
 
         except OSError as ex:
 
-            file = GENERAL_LOG
+            file = open(GENERAL_LOG,"a+")
 
             self.logger(file, f"Error while creating directory {ex}")
 
@@ -175,7 +175,7 @@ class RawDataValidation:
 
                         shutil.move(source + f, dest)
 
-                file = GENERAL_LOG
+                file = open(GENERAL_LOG,"a+")
 
                 self.logger.log(file,"Bad files moved to archive")
 
@@ -189,7 +189,7 @@ class RawDataValidation:
 
         except Exception as e:
 
-            file = GENERAL_LOG
+            file = open(GENERAL_LOG,"a+")
 
             self.logger.log(file, "Error while moving bad files to archive:: %s" % e)
 
@@ -218,7 +218,7 @@ class RawDataValidation:
             # create new directories
             self.GoodBadRawDataDirectory()
 
-            f = NAME_VALIDATION_LOG
+            f = open(NAME_VALIDATION_LOG,"a+")
 
             for filename in onlyfiles:
 
@@ -265,7 +265,7 @@ class RawDataValidation:
 
         """
         try:
-            f = COLUMN_VALIDATION_LOG
+            f = open(COLUMN_VALIDATION_LOG,"a+")
 
             self.logger.log(f,"Column Length Validation Started!!")
 
@@ -285,7 +285,7 @@ class RawDataValidation:
 
         except OSError:
 
-            f = COLUMN_VALIDATION_LOG
+            f = open(COLUMN_VALIDATION_LOG,"a+")
 
             self.logger.log(f, "Error Occured while moving the file :: %s" % OSError)
 
@@ -309,7 +309,7 @@ class RawDataValidation:
 
         """
         try:
-            f = MISSING_VALUES_LOG
+            f = open(MISSING_VALUES_LOG,"a+")
 
             self.logger.log(f,"Missing Values Validation Started!!")
 
@@ -336,7 +336,7 @@ class RawDataValidation:
 
         except OSError:
 
-            f = MISSING_VALUES_LOG
+            f = open(MISSING_VALUES_LOG,"a+")
 
             self.logger.log(f, "Error Occured while moving the file :: %s" % OSError)
 
@@ -374,7 +374,7 @@ class RawDataValidation:
 
             NumberofColumns = dic[NUMBER_OF_COLUMNS]
 
-            file = SCHEMA_VALIDATION_LOG
+            file = open(SCHEMA_VALIDATION_LOG,"a+")
 
             message = "LengthOfDateStampInFile:: %s" %LengthOfDateStampInFile + "\t" + \
                       "LengthOfTimeStampInFile:: %s" % LengthOfTimeStampInFile +"\t " + \
@@ -387,7 +387,7 @@ class RawDataValidation:
 
         except Exception as e:
 
-            file = SCHEMA_VALIDATION_LOG
+            file = open(SCHEMA_VALIDATION_LOG,"a+")
 
             self.logger.log(file, str(e))
 

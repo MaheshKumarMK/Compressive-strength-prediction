@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 from kneed import KneeLocator
-from file_operations import file_methods
+from strength.training.file_operations import file_methods
 
 class KMeansClustering:
     """

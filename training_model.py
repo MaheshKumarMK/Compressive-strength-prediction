@@ -10,6 +10,9 @@ from strength.training.data_ingestion.data_loader import DataGetter
 from strength.training.data_preprocessing.preprocessing import Preprocessor
 from strength.training.data_preprocessing.clustering import KMeansClustering
 from strength.exception import StrengthException
+from strength.training.file_operations.file_methods import File_Operation
+from strength.training.best_model_finder.tuner import Model_Finder
+import sys
 
 class TrainModel:
 
@@ -17,7 +20,7 @@ class TrainModel:
 
         self.log_writer = App_Logger()
 
-        self.file_object = MODEL_TRAINING_LOG
+        self.file_object = open(MODEL_TRAINING_LOG,"a+")
 
     def training_model(self):
 
@@ -83,6 +86,22 @@ class TrainModel:
 
                 x_train_scaled, x_test_scaled = preprocessor.standardScalingData(x_train, x_test)
 
+                model_finder=Model_Finder(self.file_object,self.log_writer) # object initialization
+
+                #getting the best model for each of the clusters
+                best_model_name,best_model=model_finder.get_best_model(x_train_scaled,y_train,x_test_scaled,y_test)
+
+                #saving the best model to the directory.
+                file_op = File_Operation(self.file_object,self.log_writer)
+
+                save_model=file_op.save_model(best_model,best_model_name+str(i))
+
+            # logging the successful Training
+            self.log_writer.log(self.file_object, 'Successful End of Training')
+            
+            self.file_object.close()
+
+
         except Exception as e:
 
             # logging the unsuccessful Training
@@ -90,7 +109,7 @@ class TrainModel:
 
             self.file_object.close()
 
-            raise str
+            raise StrengthException(e,sys)
 
 
 
