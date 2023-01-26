@@ -5,13 +5,13 @@ SCHEMA_FILE_PATH = os.path.join("schema_training.json")
 
 REGEX="['cement_strength']+['\_'']+[\d_]+[\d]+\.csv"
 
-PATH = "Training_Raw_files_validated/"
+PATH = "Training_Raw_files_validated\\"
 
-TRAINING_GOOD_RAW_FILES_VALIDATED=os.path.join(PATH, "Good_Raw/")
+TRAINING_GOOD_RAW_FILES_VALIDATED=os.path.join(PATH, "Good_Raw\\")
 
-TRAINING_BAD_RAW_FILES_VALIDATED=os.path.join(PATH, "Bad_Raw/")
+TRAINING_BAD_RAW_FILES_VALIDATED=os.path.join(PATH, "Bad_Raw\\")
 
-TIMESTAMP = datetime.strftime("%m_%d_%Y_%H_%M_%S")
+TIMESTAMP = datetime.now().strftime("%m_%d_%Y_%H_%M_%S")
 
 ARCHIVED_DIR = "TrainingArchiveBadData"
 
@@ -28,13 +28,15 @@ COLUMN_NAME = 'ColName'
 
 NUMBER_OF_COLUMNS = 'NumberofColumns'
 
-TRAINING_BATCH_FILES = "Training_Batch_Files/"
+TRAINING_BATCH_FILES = "Training_Batch_Files\\"
 
-DATABASE_PATH='Training_Database/'
+DATABASE_PATH='Training_Database\\'
 
 TRAINING_DIR_FROM_DB=os.path.join("training_artifact",'Training_FileFromDB')
 
 TRAINING_FILE_FROM_DB = os.path.join(TRAINING_DIR_FROM_DB,'InputFile.csv')
+
+MODEL_DIR = 'models'
 
 
 
