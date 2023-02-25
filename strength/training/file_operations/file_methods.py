@@ -91,3 +91,42 @@ class File_Operation:
                                    'Model File ' + filename + ' could not be saved. Exited the load_model method of the Model_Finder class')
             
             raise StrengthException(e,sys)
+        
+    
+    def find_correct_model_file(self,cluster_number):
+        """
+        Method Name: find_correct_model_file
+        Description: Select the correct model based on cluster number
+        Output: The Model file
+        On Failure: Raise Exception
+
+        """
+        self.logger_object.log(self.file_object, 'Entered the find_correct_model_file method of the File_Operation class')
+        
+        try:
+
+            self.cluster_number= cluster_number
+
+            self.folder_name=self.model_directory
+
+            self.list_of_model_files = []
+
+            self.list_of_files = os.listdir(self.folder_name)
+            
+            for self.file in self.list_of_files:
+                try:
+                    if (self.file.index(str( self.cluster_number))!=-1):
+                        self.model_name=self.file
+                except:
+                    continue
+            self.model_name=self.model_name.split('.')[0]
+            self.logger_object.log(self.file_object,
+                                   'Exited the find_correct_model_file method of the Model_Finder class.')
+            return self.model_name
+        except Exception as e:
+            self.logger_object.log(self.file_object,
+                                   'Exception occured in find_correct_model_file method of the Model_Finder class. Exception message:  ' + str(
+                                       e))
+            self.logger_object.log(self.file_object,
+                                   'Exited the find_correct_model_file method of the Model_Finder class with Failure')
+            raise Exception()

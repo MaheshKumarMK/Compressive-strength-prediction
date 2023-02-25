@@ -218,6 +218,14 @@ class Preprocessor:
 
         return Xtrain_scaled,Xtest_scaled
     
+    def pred_standardScalingData(df):
+
+        scalar = StandardScaler()
+
+        X_scaled = scalar.fit_transform(df)
+
+        return X_scaled
+    
 
     def logTransformation(self,X):
 

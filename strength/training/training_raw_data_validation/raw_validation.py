@@ -55,13 +55,17 @@ class RawDataValidation:
 
         """
         try:
-            path = TRAINING_GOOD_RAW_FILES_VALIDATED
+            good_path = TRAINING_GOOD_RAW_FILES_VALIDATED
 
-            os.makedirs(path, exist_ok=True)
+            if not os.path.isdir(good_path):
 
-            path = TRAINING_BAD_RAW_FILES_VALIDATED
+                os.makedirs(good_path, exist_ok=True)
 
-            os.makedirs(path, exist_ok=True)
+            bad_path = TRAINING_BAD_RAW_FILES_VALIDATED
+
+            if not os.path.isdir(bad_path):
+
+                os.makedirs(bad_path, exist_ok=True)
 
         except OSError as ex:
 
@@ -154,14 +158,14 @@ class RawDataValidation:
 
         """
 
-        try:
+        try:    
             source = TRAINING_BAD_RAW_FILES_VALIDATED
         
             if os.path.isdir(source):
 
-                path = ARCHIVED_DIR
+                arch_path = ARCHIVED_DIR
 
-                os.makedirs(path, exist_ok=True)
+                os.makedirs(arch_path, exist_ok=True)
 
                 dest = ARCHIVED_PATH
 
@@ -173,7 +177,7 @@ class RawDataValidation:
 
                     if f not in os.listdir(dest):
 
-                        shutil.move(source + f, dest)
+                        shutil.move(source +"\\" + f, dest)
 
                 file = open(GENERAL_LOG,"a+")
 
@@ -271,13 +275,15 @@ class RawDataValidation:
 
             for file in os.listdir(TRAINING_GOOD_RAW_FILES_VALIDATED):
 
-                csv = pd.read_csv(TRAINING_GOOD_RAW_FILES_VALIDATED + file)
+                csv = pd.read_csv(TRAINING_GOOD_RAW_FILES_VALIDATED + "\\" + file)
+
+                self.logger.log(f, "Read the csv file :: %s" % file)
 
                 if csv.shape[1] == NumberofColumns:
                     pass
                 
                 else:
-                    shutil.move(TRAINING_GOOD_RAW_FILES_VALIDATED + file, TRAINING_BAD_RAW_FILES_VALIDATED)
+                    shutil.move(TRAINING_GOOD_RAW_FILES_VALIDATED + "\\" + file, TRAINING_BAD_RAW_FILES_VALIDATED)
 
                     self.logger.log(f, "Invalid Column Length for the file!! File moved to Bad Raw Folder :: %s" % file)
 
@@ -315,14 +321,14 @@ class RawDataValidation:
 
             for file in os.listdir(TRAINING_GOOD_RAW_FILES_VALIDATED):
 
-                csv = pd.read_csv(TRAINING_GOOD_RAW_FILES_VALIDATED + file)
+                csv = pd.read_csv(TRAINING_GOOD_RAW_FILES_VALIDATED +"\\"+ file)
 
                 count = 0
 
                 for columns in csv:
                     if (len(csv[columns]) - csv[columns].count()) == len(csv[columns]):
                         count+=1
-                        shutil.move(TRAINING_GOOD_RAW_FILES_VALIDATED + file,
+                        shutil.move(TRAINING_GOOD_RAW_FILES_VALIDATED + "\\" + file,
                                     TRAINING_BAD_RAW_FILES_VALIDATED)
 
                         self.logger.log(f,"Invalid Column Length for the file!! File moved to Bad Raw Folder :: %s" % file)
@@ -330,7 +336,7 @@ class RawDataValidation:
 
                 if count==0:
 
-                    csv.to_csv(TRAINING_GOOD_RAW_FILES_VALIDATED + file, index=None, header=True)
+                    csv.to_csv(TRAINING_GOOD_RAW_FILES_VALIDATED + "\\" + file, index=None, header=True)
 
                     self.logger.log(f, f"There is no missing values in the column")
 
