@@ -2,13 +2,13 @@ import os
 
 GENERAL_LOG=os.path.join("Training_Logs","GeneralLog.txt")
 
-COLUMN_VALIDATION_LOG = (os.path.join("Training_Logs","columnValidationLog.txt"))
+COLUMN_VALIDATION_LOG = os.path.join("Training_Logs","columnValidationLog.txt")
 
 MISSING_VALUES_LOG = (os.path.join("Training_Logs","missingValuesInColumn.txt"))
 
-SCHEMA_VALIDATION_LOG = (os.path.join("Training_Logs","valuesfromSchemaValidationLog.txt"))
+SCHEMA_VALIDATION_LOG = os.path.join("Training_Logs","valuesfromSchemaValidationLog.txt")
 
-MAIN_TRAINING_LOG = (os.path.join("Training_Logs","Training_Main_Log.txt"))
+MAIN_TRAINING_LOG = os.path.join("Training_Logs","Training_Main_Log.txt")
 
 NAME_VALIDATION_LOG = (os.path.join("Training_Logs","nameValidationLog.txt"))
 
@@ -41,6 +41,10 @@ PREDICTION_DB_TABLE_CREATION_LOG="Prediction_Logs/DbTableCreateLog.txt"
 PREDICTION_DB_INSERT_LOG = "Prediction_Logs/DbInsertLog.txt"
 
 PREDICTION_LOGS_EXPORT_CSV="Prediction_Logs/ExportToCsv.txt"
+
+PREDICTION_LOG="Prediction_Logs/Prediction_Log.txt",
+
+
 
 
 
