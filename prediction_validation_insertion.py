@@ -1,21 +1,18 @@
 from strength.predicton.Prediction_Raw_Data_Validation.predictionDataValidation import Prediction_Data_validation
 from strength.predicton.prediction_db_operation.db_operation import dBOperation
-from DataTransformation_Prediction.DataTransformationPrediction import dataTransformPredict
 from strength.logger import App_Logger
 
-class pred_validation:
+class PredValidation:
 
     def __init__(self,path):
 
         self.raw_data = Prediction_Data_validation(path)
 
-        self.dataTransform = dataTransformPredict()
-
         self.dBOperation = dBOperation()
 
         self.file_object = open("Prediction_Logs/Prediction_Log.txt", 'a+')
 
-        self.log_writer = logger.App_Logger()
+        self.log_writer = App_Logger()
 
     def prediction_validation(self):
 

@@ -1,4 +1,5 @@
 import pandas as pd
+from strength.constants.prediction_pipeline import *
 
 class Data_Getter_Pred:
     """

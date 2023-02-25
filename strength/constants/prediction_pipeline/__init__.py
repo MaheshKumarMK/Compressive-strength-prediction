@@ -1,3 +1,5 @@
+import os
+
 SCHEMA_PREDICTION='schema_prediction.json'
 
 PREDICTION_PATH = 'Prediction_Raw_Files_Validated/'
