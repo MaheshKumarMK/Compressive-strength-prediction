@@ -1,0 +1,6 @@
+2023-02-26/01:02:00		Missing Values Validation Started!!
+2023-02-26/01:02:00		Error Occured while moving the file :: <class 'OSError'>
+2023-02-26/01:04:20		Missing Values Validation Started!!
+2023-02-26/01:04:20		There is no missing values in the column
+2023-02-26/01:46:28		Missing Values Validation Started!!
+2023-02-26/01:46:28		There is no missing values in the column

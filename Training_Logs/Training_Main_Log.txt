@@ -1,0 +1,41 @@
+2023-01-30/18:57:35		Start validation of training files and data
+2023-02-21/02:56:23		Start validation of training files and data
+2023-02-21/03:00:12		Start validation of training files and data
+2023-02-25/17:54:13		Start validation of training files and data
+2023-02-25/22:25:30		Start validation of training files and data
+2023-02-26/00:09:55		Start validation of training files and data
+2023-02-26/00:15:21		Start validation of training files and data
+2023-02-26/00:33:22		Start validation of training files and data
+2023-02-26/00:33:54		Start validation of training files and data
+2023-02-26/00:34:57		Start validation of training files and data
+2023-02-26/00:42:21		Start validation of training files and data
+2023-02-26/00:51:10		Start validation of training files and data
+2023-02-26/00:54:16		Start validation of training files and data
+2023-02-26/00:55:27		Start validation of training files and data
+2023-02-26/00:55:37		Start validation of training files and data
+2023-02-26/00:56:48		Start validation of training files and data
+2023-02-26/00:57:59		Start validation of training files and data
+2023-02-26/00:59:13		Start validation of training files and data
+2023-02-26/00:59:58		Start validation of training files and data
+2023-02-26/01:02:00		Start validation of training files and data
+2023-02-26/01:04:20		Start validation of training files and data
+2023-02-26/01:04:20		Raw Data Validation Complete!!
+2023-02-26/01:04:20		Creating Training_Database and tables on the basis of given schema!!!
+2023-02-26/01:04:21		Table creation Completed!!
+2023-02-26/01:04:21		Insertion of Data into Table started!!!!
+2023-02-26/01:06:00		Insertion in Table completed!!!
+2023-02-26/01:06:00		Deleting Good Data Folder!!!
+2023-02-26/01:06:00		Good_Data folder deleted!!!
+2023-02-26/01:06:00		Moving bad files to Archive and deleting Bad_Data folder!!!
+2023-02-26/01:46:28		Start validation of training files and data
+2023-02-26/01:46:28		Raw Data Validation Complete!!
+2023-02-26/01:46:28		Creating Training_Database and tables on the basis of given schema!!!
+2023-02-26/01:46:28		Table creation Completed!!
+2023-02-26/01:46:28		Insertion of Data into Table started!!!!
+2023-02-26/01:48:07		Insertion in Table completed!!!
+2023-02-26/01:48:07		Deleting Good Data Folder!!!
+2023-02-26/01:48:07		Good_Data folder deleted!!!
+2023-02-26/01:48:07		Moving bad files to Archive and deleting Bad_Data folder!!!
+2023-02-26/01:48:07		Bad files moved to archive!! Bad folder Deleted!!
+2023-02-26/01:48:07		Validation Operation completed!!
+2023-02-26/01:48:07		Extracting csv file from table
