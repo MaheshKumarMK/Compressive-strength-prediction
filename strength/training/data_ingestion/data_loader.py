@@ -17,7 +17,7 @@ class DataGetter:
 
         self.logger_object=logger_object
 
-    def data_getter(self,) ->DataFrame:
+    def get_data(self,) ->DataFrame:
         """
         Method: data_getter
         Description: This method reads the data from source.
