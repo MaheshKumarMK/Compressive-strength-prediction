@@ -38,6 +38,8 @@ TRAINING_FILE_FROM_DB = os.path.join(TRAINING_DIR_FROM_DB,'InputFile.csv')
 
 MODEL_DIR = 'models'
 
+PREPROCESSING_DIR='preprocessing_dir'
+
 
 
 

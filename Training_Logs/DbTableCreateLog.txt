@@ -1,3 +1,0 @@
-2023-02-26/01:04:21		Tables created successfully!!
-2023-02-26/01:46:28		Tables created successfully!!
-2023-02-26/01:46:28		Closed Training database successfully

@@ -41,7 +41,7 @@ class prediction:
             data  = preprocessor.logTransformation(data)
 
             #scale the prediction data
-            data_scaled = pandas.DataFrame(preprocessor.standardScalingData(data),columns=data.columns)
+            data_scaled = pandas.DataFrame(preprocessor.pred_standardScalingData(data),columns=data.columns)
 
             #data=data.to_numpy()
             file_loader=file_methods.File_Operation(self.file_object,self.log_writer)
@@ -76,9 +76,13 @@ class prediction:
 
             result = pandas.DataFrame(result,columns=['Predictions'])
 
-            path="Prediction_Output_File/Predictions.csv"
+            pred_path="Prediction_Output_File"
 
-            result.to_csv("Prediction_Output_File/Predictions.csv",header=True) #appends result to prediction file
+            if not os.path.isdir(pred_path):
+                os.makedirs(pred_path, exist_ok=True)
+
+
+            result.to_csv(os.path.join(pred_path,"Predictions.csv"),header=True) #appends result to prediction file
 
             self.log_writer.log(self.file_object,'End of Prediction')
 
@@ -88,7 +92,7 @@ class prediction:
 
             raise ex
         
-        return path
+        return pred_path
 
             # old code
             # i=0

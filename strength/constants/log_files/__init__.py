@@ -24,7 +24,7 @@ MODEL_TRAINING_LOG = (os.path.join("Training_Logs","ModelTrainingLog.txt"))
 
 # Prediction logs
 
-PREDICTION_SCHEMA_VALIDATION_LOG = os.path.join("Prediction_Logs,valuesfromSchemaValidationLog.txt")
+PREDICTION_SCHEMA_VALIDATION_LOG = os.path.join("Prediction_Logs","valuesfromSchemaValidationLog.txt")
 
 PREDICTION_GENERAL_LOG = "Prediction_Logs/GeneralLog.txt"
 
@@ -32,7 +32,7 @@ PREDICTION_NAME_VALIDATION_LOG="Prediction_Logs/nameValidationLog.txt"
 
 PREDICTION_COLUMN_VALIDATION_LOG="Prediction_Logs/columnValidationLog.txt"
 
-PREDICTION_MISSING_VALUE = "Prediction_Logs/missingValuesInColumn.txt",
+PREDICTION_MISSING_VALUE = "Prediction_Logs/missingValuesInColumn.txt"
 
 PREDICTION_DATABASE_CONN_LOG="Prediction_Logs/DataBaseConnectionLog.txt"
 
@@ -42,7 +42,7 @@ PREDICTION_DB_INSERT_LOG = "Prediction_Logs/DbInsertLog.txt"
 
 PREDICTION_LOGS_EXPORT_CSV="Prediction_Logs/ExportToCsv.txt"
 
-PREDICTION_LOG="Prediction_Logs/Prediction_Log.txt",
+PREDICTION_LOG="Prediction_Logs/Prediction_Log.txt"
 
 
 

@@ -2,6 +2,8 @@ import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 from kneed import KneeLocator
 from strength.training.file_operations import file_methods
+from strength.constants.training_pipeline import *
+import os
 
 class KMeansClustering:
     """
@@ -47,7 +49,12 @@ class KMeansClustering:
             plt.ylabel('WCSS')
 
             #plt.show()
-            plt.savefig('preprocessing_data/K-Means_Elbow.PNG') # saving the elbow plot locally
+            if not os.path.isdir(PREPROCESSING_DIR):
+                os.makedirs(PREPROCESSING_DIR, exist_ok=True)
+
+            fig_path = os.path.join(PREPROCESSING_DIR,"\\K-Means_Elbow.PNG")
+
+            plt.savefig(fig_path) # saving the elbow plot locally
 
             # finding the value of the optimum cluster programmatically
             self.kn = KneeLocator(range(1, 11), wcss, curve='convex', direction='decreasing')

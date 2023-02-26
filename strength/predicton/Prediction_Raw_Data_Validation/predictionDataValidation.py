@@ -123,13 +123,13 @@ class Prediction_Data_validation:
 
             if not os.path.isdir(path):
 
-                os.makedirs(path)
+                os.makedirs(path, exist_ok=True)
 
             path = PREDICTION_BAD_RAW_VALIDATED_DIR
 
             if not os.path.isdir(path):
 
-                os.makedirs(path)
+                os.makedirs(path, exist_ok=True)
 
         except OSError as ex:
 
@@ -155,9 +155,9 @@ class Prediction_Data_validation:
 
             path = PREDICTION_PATH
 
-            if os.path.isdir(path + 'Good_Raw/'):
+            if os.path.isdir(PREDICTION_GOOD_RAW_VALIDATED_DIR):
 
-                shutil.rmtree(path + 'Good_Raw/')
+                shutil.rmtree(PREDICTION_GOOD_RAW_VALIDATED_DIR)
 
                 file = open(PREDICTION_GENERAL_LOG, 'a+')
 
@@ -189,9 +189,9 @@ class Prediction_Data_validation:
 
             path = PREDICTION_PATH
 
-            if os.path.isdir(path + 'Bad_Raw/'):
+            if os.path.isdir(PREDICTION_BAD_RAW_VALIDATED_DIR):
 
-                shutil.rmtree(path + 'Bad_Raw/')
+                shutil.rmtree(PREDICTION_BAD_RAW_VALIDATED_DIR)
 
                 file = open(PREDICTION_GENERAL_LOG, 'a+')
 
@@ -248,7 +248,7 @@ class Prediction_Data_validation:
 
                 if f not in os.listdir(dest):
 
-                    shutil.move(source + f, dest)
+                    shutil.move(source + "\\" + f, dest)
 
             file = open(PREDICTION_GENERAL_LOG, 'a+')
 
@@ -292,11 +292,11 @@ class Prediction_Data_validation:
 
         self.deleteExistingGoodDataTrainingFolder()
 
-        self.createDirectoryForGoodBadRawData()
 
         onlyfiles = [f for f in os.listdir(self.Batch_Directory)]
 
         try:
+            self.createDirectoryForGoodBadRawData()
 
             f = open(PREDICTION_NAME_VALIDATION_LOG, 'a+')
 
@@ -312,21 +312,21 @@ class Prediction_Data_validation:
 
                         if len(splitAtDot[3]) == LengthOfTimeStampInFile:
 
-                            shutil.copy(PREDICTION_BATCH_FILES + filename, PREDICTION_GOOD_RAW_VALIDATED_DIR)
+                            shutil.copy(PREDICTION_BATCH_FILES +"\\" + filename, PREDICTION_GOOD_RAW_VALIDATED_DIR)
 
                             self.logger.log(f,"Valid File name!! File moved to GoodRaw Folder :: %s" % filename)
 
                         else:
-                            shutil.copy(PREDICTION_BATCH_FILES + filename, PREDICTION_BAD_RAW_VALIDATED_DIR)
+                            shutil.copy(PREDICTION_BATCH_FILES + "\\" + filename, PREDICTION_BAD_RAW_VALIDATED_DIR)
 
                             self.logger.log(f,"Invalid File Name!! File moved to Bad Raw Folder :: %s" % filename)
 
                     else:
-                        shutil.copy(PREDICTION_BATCH_FILES + filename, PREDICTION_BAD_RAW_VALIDATED_DIR)
+                        shutil.copy(PREDICTION_BATCH_FILES + "\\" + filename, PREDICTION_BAD_RAW_VALIDATED_DIR)
 
                         self.logger.log(f,"Invalid File Name!! File moved to Bad Raw Folder :: %s" % filename)
                 else:
-                    shutil.copy(PREDICTION_BATCH_FILES + filename, PREDICTION_BAD_RAW_VALIDATED_DIR)
+                    shutil.copy(PREDICTION_BATCH_FILES + "\\" + filename, PREDICTION_BAD_RAW_VALIDATED_DIR)
 
                     self.logger.log(f, "Invalid File Name!! File moved to Bad Raw Folder :: %s" % filename)
 
@@ -363,31 +363,35 @@ class Prediction_Data_validation:
 
             self.logger.log(f,"Column Length Validation Started!!")
 
-            for file in os.listdir('Prediction_Raw_Files_Validated/Good_Raw/'):
+            for file in os.listdir(PREDICTION_GOOD_RAW_VALIDATED_DIR):
 
-                csv = pd.read_csv("Prediction_Raw_Files_Validated/Good_Raw/" + file)
+                csv = pd.read_csv(PREDICTION_GOOD_RAW_VALIDATED_DIR + "\\" + file)
+
+                self.logger.log(f, "Read the CSV file succesfully")
 
                 if csv.shape[1] == NumberofColumns:
 
-                    #csv.rename(columns={"Unnamed: 0": "Wafer"}, inplace=True)
-                    csv.to_csv(PREDICTION_GOOD_RAW_VALIDATED_DIR + file, index=None, header=True)
+                    csv.to_csv(PREDICTION_GOOD_RAW_VALIDATED_DIR + "\\"  + file, index=None, header=True)
+
+                    self.logger.log(f, "Saved the CSV file succesfully")
 
                 else:
-                    shutil.move(PREDICTION_GOOD_RAW_VALIDATED_DIR + file, PREDICTION_BAD_RAW_VALIDATED_DIR)
+            
+                    shutil.move(PREDICTION_GOOD_RAW_VALIDATED_DIR + "\\" + file, PREDICTION_BAD_RAW_VALIDATED_DIR,)
 
                     self.logger.log(f, "Invalid Column Length for the file!! File moved to Bad Raw Folder :: %s" % file)
 
             self.logger.log(f, "Column Length Validation Completed!!")
 
-        except OSError:
+        # except OSError:
 
-            f = open(PREDICTION_COLUMN_VALIDATION_LOG, 'a+')
+        #     f = open(PREDICTION_COLUMN_VALIDATION_LOG, 'a+')
 
-            self.logger.log(f, "Error Occured while moving the file :: %s" % OSError)
+        #     self.logger.log(f, "Error Occured while moving the file :: %s" % OSError)
 
-            f.close()
+        #     f.close()
 
-            raise OSError
+        #     raise OSError
 
         except Exception as e:
 
@@ -424,7 +428,7 @@ class Prediction_Data_validation:
 
             for file in os.listdir(PREDICTION_GOOD_RAW_VALIDATED_DIR):
 
-                csv = pd.read_csv(PREDICTION_GOOD_RAW_VALIDATED_DIR + file)
+                csv = pd.read_csv(PREDICTION_GOOD_RAW_VALIDATED_DIR + "\\" + file)
 
                 count = 0
 
@@ -434,7 +438,7 @@ class Prediction_Data_validation:
 
                         count+=1
 
-                        shutil.move(PREDICTION_GOOD_RAW_VALIDATED_DIR + file,
+                        shutil.move(PREDICTION_GOOD_RAW_VALIDATED_DIR + "\\" + file,
                                     PREDICTION_BAD_RAW_VALIDATED_DIR)
                         
                         self.logger.log(f,"Invalid Column Length for the file!! File moved to Bad Raw Folder :: %s" % file)
@@ -444,7 +448,7 @@ class Prediction_Data_validation:
                 if count==0:
 
                     # csv.rename(columns={"Unnamed: 0": "Wafer"}, inplace=True)
-                    csv.to_csv(PREDICTION_GOOD_RAW_VALIDATED_DIR + file, index=None, header=True)
+                    csv.to_csv(PREDICTION_GOOD_RAW_VALIDATED_DIR + "\\" + file, index=None, header=True)
 
         except OSError:
 

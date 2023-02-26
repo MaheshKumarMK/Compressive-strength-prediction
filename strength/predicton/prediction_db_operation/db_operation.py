@@ -165,7 +165,7 @@ class dBOperation:
                 os.makedirs(self.fileFromDb)
 
             # Open CSV file for writing.
-            csvFile = csv.writer(open(self.fileFromDb + self.fileName, 'w', newline=''),delimiter=',', lineterminator='\r\n',quoting=csv.QUOTE_ALL, escapechar='\\')
+            csvFile = csv.writer(open(PRED_INPUT_FILE, 'w', newline=''),delimiter=',', lineterminator='\r\n',quoting=csv.QUOTE_ALL, escapechar='\\')
 
             # Add the headers and data to the CSV file.
             csvFile.writerow(headers)

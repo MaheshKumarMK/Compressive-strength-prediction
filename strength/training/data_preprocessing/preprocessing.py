@@ -4,6 +4,7 @@ from sklearn.impute import KNNImputer
 from sklearn.preprocessing import StandardScaler
 
 
+
 class Preprocessor:
     """
     This class shall  be used to clean and transform the data before training.
@@ -208,7 +209,7 @@ class Preprocessor:
     #
     #     return x_sampled,y_sampled
 
-    def standardScalingData(self,Xtrain, Xtest):
+    def standardScalingData(self, Xtrain, Xtest):
 
         scalar = StandardScaler()
 
@@ -218,7 +219,7 @@ class Preprocessor:
 
         return Xtrain_scaled,Xtest_scaled
     
-    def pred_standardScalingData(df):
+    def pred_standardScalingData(self,df):
 
         scalar = StandardScaler()
 

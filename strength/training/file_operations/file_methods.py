@@ -73,7 +73,7 @@ class File_Operation:
 
         try:
 
-            with open(self.model_directory + filename + '/' + filename + '.sav',
+            with open(os.path.join(self.model_directory, filename) + "\\"+ filename + '.sav',
                       'rb') as f:
                 
                 self.logger_object.log(self.file_object,
