@@ -1,6 +1,0 @@
-2023-02-26/01:04:20		Opened Training database successfully
-2023-02-26/01:04:21		Closed Training database successfully
-2023-02-26/01:04:21		Opened Training database successfully
-2023-02-26/01:46:28		Opened Training database successfully
-2023-02-26/01:46:28		Opened Training database successfully
-2023-02-26/01:48:07		Opened Training database successfully
