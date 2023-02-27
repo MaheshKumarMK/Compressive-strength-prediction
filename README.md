@@ -16,7 +16,7 @@ Main purpose of the test:
 
 Strength of Concrete at various ages:
 
-![alt text](images\Capture.PNG)
+![alt text](https://github.com/MaheshKumarMK/Compressive-strength-prediction/blob/54345fdd6d3d9e73850a821c8f3d6c56af17e501/images/Capture.PNG)
 
 It is a known fact that concrete strength increases with age. Below shows the strength of concrete at different ages in comparison with the strength at 28 days after casting.
 Age of Concrete	Compressive strength Gain (%)
