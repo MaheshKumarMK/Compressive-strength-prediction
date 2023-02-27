@@ -18,49 +18,30 @@ Strength of Concrete at various ages:
 
 ![alt text](https://github.com/MaheshKumarMK/Compressive-strength-prediction/blob/54345fdd6d3d9e73850a821c8f3d6c56af17e501/images/Capture.PNG)
 
-It is a known fact that concrete strength increases with age. Below shows the strength of concrete at different ages in comparison with the strength at 28 days after casting.
-Age of Concrete	Compressive strength Gain (%)
-3 days	30 %
-7 days	67.5 % (70% for safety)
-14 days	90 %
-28 days	99 % (70% for safety)
-
 The failure of compressive strength tests can result in significant costs and workforce requirements as the built structure may need to be discarded and rebuilt. This is why it is important to ensure the proper mixing and curing of concrete and to regularly test concrete samples to confirm that they meet the required strength specifications. The results of the compressive strength tests help to ensure the structural integrity and safety of the concrete structures, preventing costly failures in the future.
-Problem objective:
+
+
+# Problem objective:
 Reduce the risk and cost involved in discarding the concrete structures when the concrete cube test fails.
-Solution proposed:
+
+# Solution proposed:
 To build a regression model to predict the concrete compressive strength based before hand on the different features in the training data.
-Yes, building a regression model to predict concrete compressive strength based on different features in the training data is possible. Machine learning algorithms, particularly regression algorithms, can be used to model the relationship between the concrete compressive strength and its various contributing factors, such as the type and proportion of cement, aggregate, water, and admixtures used, the curing conditions, and other relevant factors.
-To build the model, you need to gather a large and representative dataset that includes concrete compressive strength measurements and the corresponding features. This dataset will be used to train the machine learning algorithm to learn the relationship between the features and the compressive strength.
-Once the model is trained, it can be used to make predictions on new concrete mixes based on their features. This can help engineers and contractors make informed decisions about the mix design and other factors that influence the concrete compressive strength.
-It's important to note that building a reliable regression model for concrete compressive strength prediction requires careful pre-processing of the data and a thorough evaluation of the model's performance using various metrics, such as mean absolute error, root mean squared error, and coefficient of determination
 
 
-
-Architecture:
+# Architecture:
  
+![alt text](https://github.com/MaheshKumarMK/Compressive-strength-prediction/blob/c46717b41c055333798224270dbb9d03a4f32d5f/images/Picture1.jpg)
+
 Data Description
 Given is the variable name, variable type, the measurement unit and a brief description. 
 The concrete compressive strength is the regression problem. The order of this listing 
 corresponds to the order of numerals along the rows of the database. 
 
-Name	Data Type	Measurement	Description
-Cement (component 1)	quantitative	kg in a m3 mixture	Input Variable
-Blast Furnace Slag (component 2)	quantitative	kg in a m3 mixture	Input Variable-- Blast furnace slag is a nonmetallic coproduct produced in the process. It consists primarily of silicates, aluminosilicates, and calcium-alumina-silicates
-Fly Ash (component 3)	quantitative	kg in a m3 mixture	Input Variable- it is a coal combustion product that is composed of the particulates (fine particles of burned fuel) that are driven out of coal-fired boilers together with the flue gases. 
-
-Water (component 4)	quantitative	kg in a m3 mixture	Input Variable
-Superplasticizer (component 5)	quantitative	kg in a m3 mixture	Input Variable--Superplasticizers (SP's), also known as high range water reducers, are additives used in making high strength concrete. Their addition to concrete or mortar allows the reduction of the water to cement ratio without negatively affecting the workability of the mixture, and enables the production of self-consolidating concrete and high performance concrete
-Coarse Aggregate (component 6)	quantitative	kg in a m3 mixture	Input Variable-- construction aggregate, or simply "aggregate", is a broad category of coarse to medium grained particulate material used in construction, including sand, gravel, crushed stone, slag, recycled concrete and geosynthetic aggregates
-Fine Aggregate (component 7)	quantitative	kg in a m3 mixture	Input Variable—Similar to coarse aggregate, the constitution is much finer.
-Age	quantitative	Day (1~365)	Input Variable
-Concrete compressive strength	quantitative	MPa	Output Variable
-
 Apart from training files, we also require a "schema" file from the client, which contains all the relevant information about the training files such as:
 Name of the files, Length of Date value in Filename, Length of Time value in Filename, Number of Columns, Name of the Columns, and their datatype.
  
 
-Data Validation 
+# Data Validation 
 In this step, we perform different sets of validation on the given set of training files.  
 
 1.	We have created a class “TrainValidation” which initializes logger file and classes “RawValidation” and “DBoperation” which defines a method “train_validation”.
@@ -89,12 +70,12 @@ j)	Null values in columns - If any of the columns in a file have all the values 
 
 
 
-Data Insertion in Database
+# Data Insertion in Database
 1) Database Creation and connection - Create a database with the given name passed. If the database is already created, open the connection to the database. 
 2) Table creation in the database - Table with name - "Good_Data", is created in the database for inserting the files in the "Good_Data_Folder" based on given column names and datatype in the schema file. If the table is already present, then the new table is not created and new files are inserted in the already present table as we want training to be done on new as well as old training files.     
 3) Insertion of files in the table - All the files in the "Good_Data_Folder" are inserted in the above-created table. If any file has invalid data type in any of the columns, the file is not loaded in the table and is moved to "Bad_Data_Folder".
  
-Model Training 
+# Model Training 
 1) Data Export from Db - The data in a stored database is exported as a CSV file to be used for model training.
 2) Data Preprocessing  
    a) Check for null values in the columns. If present, impute the null values using the KNN imputer
@@ -104,7 +85,7 @@ Model Training
    To train data in different clusters. The Kmeans model is trained over preprocessed data and the model is saved for further use in prediction.
 4) Model Selection - After clusters are created, we find the best model for each cluster. We are using two algorithms, "Random forest Regressor" and “Linear Regression”. For each cluster, both the algorithms are passed with the best parameters derived from GridSearch. We calculate the Rsquared scores for both models and select the model with the best score. Similarly, the model is selected for each cluster. All the models for every cluster are saved for use in prediction. 
  
-Prediction Data Description
+# Prediction Data Description
  
 Client will send the data in multiple set of files in batches at a given location. Data will contain climate indicators in 8 columns.
 Apart from prediction files, we also require a "schema" file from client which contains all the relevant information about the training files such as:
@@ -122,7 +103,7 @@ Data Insertion in Database
 3) Insertion of files in the table - All the files in the "Good_Data_Folder" are inserted in the above-created table. If any file has invalid data type in any of the columns, the file is not loaded in the table and is moved to "Bad_Data_Folder".
 
 
-Prediction 
+# Prediction 
 1) Data Export from Db - The data in the stored database is exported as a CSV file to be used for prediction.
 2) Data Preprocessing   
    a) Check for null values in the columns. If present, impute the null values using the KNN imputer
@@ -132,8 +113,4 @@ Prediction
 4) Prediction - Based on the cluster number, the respective model is loaded and is used to predict the data for that cluster.
 5) Once the prediction is made for all the clusters, the predictions along with the original names before label encoder are saved in a CSV file at a given location and the location is returned to the client.
  
-Deployment
-
-We will be deploying the model to the Pivotal Web Services Platform. 
-This is a workflow diagram for the prediction of using the trained model.                  
 
